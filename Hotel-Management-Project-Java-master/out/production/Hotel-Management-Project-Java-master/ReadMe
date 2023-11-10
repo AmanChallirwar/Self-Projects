@@ -1,0 +1,36 @@
+This code represents a simple hotel reservation and management system in Java. It allows users to display room details, check room availability, book rooms, order food, and checkout. The system uses Java serialization to store and retrieve hotel data, so that the information is retained between program executions.
+
+Here's an explanation of the key components and functionality of the code:
+
+1. Class Definitions:
+   - Food: Represents a food item with attributes like item number, quantity, and price. The price is calculated based on the item number and quantity.
+   - SingleRoom and DoubleRoom: These classes represent single and double rooms with attributes like customer details (name, contact, gender), and a list of ordered food items.
+   - NotAvailable: A custom exception class that's thrown when a room is not available.
+   - holder: A class that holds arrays of different room types, such as luxury double rooms, deluxe double rooms, luxury single rooms, and deluxe single rooms.
+   - Hotel: Contains the core logic and methods for managing rooms, booking, ordering food, and more.
+   - write (implements Runnable): A separate thread class used to write the hotel data to a file for persistence.
+
+2. Main Method:
+   - The `main` method is the entry point of the program.
+   - It first checks if a backup file ("backup") exists, and if so, it loads the hotel data from the file using Java object serialization.
+   - It then presents a menu to the user and allows them to perform various actions related to room booking and management.
+   - Users can display room details, check room availability, book rooms, order food, and checkout.
+   - A separate thread (`write`) is used to periodically save the hotel data to the "backup" file, ensuring persistence of data between program executions.
+
+3. Functionality:
+   - Users can view room details, including the number of beds, AC availability, free breakfast, and the daily charge.
+   - They can check room availability for a specific room type.
+   - Users can book rooms by specifying the room type and choosing an available room.
+   - Ordering food is possible, where the user specifies the room number and the food items they want to order.
+   - Checkout allows the user to settle the bill for their stay and food orders, and the room is then marked as available for future bookings.
+
+4. Serialization:
+   - The program uses Java serialization to save and load the `holder` object, which stores information about the rooms and their availability.
+
+5. Error Handling:
+   - The program handles exceptions, including `NotAvailable` exceptions, and provides appropriate error messages when necessary.
+
+6. Thread for Data Persistence:
+   - A separate thread is used to periodically save the hotel data to the "backup" file, ensuring that data is saved even if the program is abruptly terminated.
+
+Overall, this code demonstrates a simple hotel reservation and management system with room booking, food ordering, and data persistence capabilities.
